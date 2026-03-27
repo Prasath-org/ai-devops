@@ -1,0 +1,223 @@
+{
+  "scan_timestamp": "2026-03-26T15:37:56.220008",
+  "model": "qwen2.5-coder:0.5b",
+  "repo": "/Users/pvaratha/labs/ai-devops/sample-python-repo",
+  "files_scanned": 3,
+  "results": [
+    {
+      "file": "app.py",
+      "issues": [
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "SQL Injection",
+          "line_range": "23-24",
+          "description": "Insecure SQL query concatenation and parameterization.",
+          "recommendation": "Use parameterized queries or use prepared statements to prevent SQL injection."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Hardcoded Secret",
+          "line_range": "23-24",
+          "description": "Insecure hardcoding of a secret key.",
+          "recommendation": "Use environment variables or secure vaults."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Insecure Deserialization",
+          "line_range": "23-24",
+          "description": "Insecure deserialization of user input.",
+          "recommendation": "Use secure serialization methods."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Weak Cryptography",
+          "line_range": "23-24",
+          "description": "Insecure use of cryptographic algorithms.",
+          "recommendation": "Use strong encryption methods."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Token Generation",
+          "line_range": "23-24",
+          "description": "Insecure token generation.",
+          "recommendation": "Use secure token management methods."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Debug Mode",
+          "line_range": "23-24",
+          "description": "Insecure debug mode.",
+          "recommendation": "Enable secure debugging tools."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Bare Except Clauses",
+          "line_range": "23-24",
+          "description": "Missing bare except clauses to handle errors.",
+          "recommendation": "Implement try-except blocks."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Input Validation",
+          "line_range": "23-24",
+          "description": "Insecure input validation.",
+          "recommendation": "Use parameterized queries or use prepared statements."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Network Binding",
+          "line_range": "23-24",
+          "description": "Insecure network binding.",
+          "recommendation": "Use secure network protocols."
+        },
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL",
+          "category": "Plaintext Password Storage",
+          "line_range": "23-24",
+          "description": "Insecure plaintext password storage.",
+          "recommendation": "Use secure vaults or encrypt passwords."
+        }
+      ],
+      "summary": {
+        "total_issues": 15,
+        "critical": 7,
+        "high": 0,
+        "medium": 2,
+        "low": 3
+      }
+    },
+    {
+      "file": "database/db_handler.py",
+      "issues": [
+        {
+          "id": "SAST-PARSE-ERR",
+          "severity": "INFO",
+          "category": "Parse Error",
+          "line_range": "N/A",
+          "description": "LLM response could not be parsed as JSON.",
+          "recommendation": "Review raw output in sast_report.json under raw_responses.",
+          "_raw": "```json\n{\n  \"file\": \"database/db_handler.py\",\n  \"issues\": [\n    {\n      \"id\": \"SAST-001\",\n      \"severity\": \"CRITICAL|HIGH|MEDIUM|LOW|INFO\",\n      \"category\": \"SQL Injection\",\n      \"line_range\": \"23\",\n      \"description\": \"Direct string formatting in SQL query, which can lead to injection if user input is not properly sanitized.\",\n      \"recommendation\": \"Use parameterized queries or prepared statements to prevent SQL injection.\",\n      \"code\": \"result = execute_query(f'SELECT * FROM users WHER"
+        }
+      ],
+      "summary": {
+        "total_issues": 0,
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      }
+    },
+    {
+      "file": "utils/auth.py",
+      "issues": [
+        {
+          "id": "SAST-001",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "SQL Injection",
+          "line_range": "25-30",
+          "description": "The function `generate_token` does not properly encode the user ID before returning it.",
+          "recommendation": "Add input validation to ensure the user ID is a valid string.",
+          "code": "def generate_token(user_id):"
+        },
+        {
+          "id": "SAST-002",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Hardcoded Credentials / Secrets",
+          "line_range": "15-20",
+          "description": "The function `verify_token` does not check if the token is expired.",
+          "recommendation": "Add expiration checks to ensure tokens are valid and do not expire.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-003",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Insecure Deserialization (pickle, yaml.load)",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not validate the token format.",
+          "recommendation": "Add input validation to ensure the token is in a valid format.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-004",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Weak Cryptography / Token Generation",
+          "line_range": "25-30",
+          "description": "The function `generate_token` does not use strong encryption.",
+          "recommendation": "Add input validation to ensure the token is encrypted properly.",
+          "code": "def generate_token(user_id):"
+        },
+        {
+          "id": "SAST-005",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Missing Authentication or Authorization",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not handle authentication correctly.",
+          "recommendation": "Add input validation to ensure the user is authenticated before using the token.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-006",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Debug Mode Enabled in Production",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not handle debug mode correctly.",
+          "recommendation": "Add input validation to ensure the debug mode is enabled before using the token.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-007",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Bare Except Clauses Hiding Errors",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not handle bare except clauses correctly.",
+          "recommendation": "Add input validation to ensure the exception handling is correct.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-008",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Missing Input Validation",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not validate input correctly.",
+          "recommendation": "Add input validation to ensure the user ID is a valid string and token format is correct.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-009",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Insecure Network Binding",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not handle network binding correctly.",
+          "recommendation": "Add input validation to ensure the network is accessible and that the token is being sent over a secure channel.",
+          "code": "def verify_token(token):"
+        },
+        {
+          "id": "SAST-010",
+          "severity": "CRITICAL|HIGH|MEDIUM|LOW|INFO",
+          "category": "Plaintext Password Storage",
+          "line_range": "25-30",
+          "description": "The function `verify_token` does not handle plaintext password storage correctly.",
+          "recommendation": "Add input validation to ensure the user ID is a valid string and token format is correct.",
+          "code": "def verify_token(token):"
+        }
+      ],
+      "summary": {
+        "total_issues": 10,
+        "critical": 5,
+        "high": 5,
+        "medium": 5,
+        "low": 5
+      }
+    }
+  ]
+}
